@@ -13,14 +13,14 @@
 				text-decoration: none;
 			}
 			.bm-container {
-				width: 80%;
+				width: 100%;
 				max-width: 1000px;
 				display: flex;
 				gap: 10px;
 				align-items: center;
 				justify-content: center;
 				flex-wrap: wrap;
-				padding: 10px 0px;
+				padding: 10px 10px;
 				margin: 0px auto;
 			}
 			.item_container {
@@ -28,38 +28,37 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				margin-bottom: 15px;
 			}
 			.name_style {
-				font-size: 11px;
+				font-size: 25px;
 				margin-top: 5px;
 				color: #f8f9fa;
 				overflow: hidden;
 				text-overflow: ellipsis;
-				width: 80px;
+				width: 250px;
 				white-space: nowrap;
 				text-align: center;
 			}
 			.img_style {
-				width: 130px;
-				height: 90px;
+				width: 300px;
+				height: 210px;
 				border-radius: 8px;
 			}
 			.centered {
-				width: 80%; /* 고정된 너비 설정 */
+				width: 98%; /* 고정된 너비 설정 */
 				max-width: 1000px;
-				margin: 0 auto; /* 상하: 0, 좌우: auto */
+				margin: 10px auto; /* 상하: 0, 좌우: auto */
 				border: 1px solid #444;
 				border-radius: 10px;
 				text-align: center;
-				margin-top: 20px;
+				font-size: 25px;
 			}
 		</style>
 	</head>
 
 	<body>
-		<div class="centered">
-			<p>This is a centered box!</p>
-		</div>
+		<div class="centered">This is a centered box!</div>
 		<div id="container" class="bm-container"></div>
 	</body>
 	<script>
