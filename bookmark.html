@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>bookmark</title>
+	</head>
+
+	<body>
+		<div id="container" class="bm-container"></div>
+	</body>
+	<script>
+		const jsonFilePath = "./bm.json";
+
+		window.addEventListener("DOMContentLoaded", async () => {
+			const output = document.getElementById("output");
+			const container = document.getElementById("container");
+
+			try {
+				const response = await fetch(jsonFilePath);
+				if (!response.ok) {
+					console.log("error");
+				}
+				const data = await response.json();
+
+				data.sort((a, b) => a.order - b.order);
+
+				data.forEach((item, index) => {
+					const link = document.createElement("a");
+					link.href = `${item.link}`;
+					link.className = "item_container";
+					link.target = "_blank";
+					link.id = `link-id-${index}`;
+					container.appendChild(link);
+
+					const idLink = document.getElementById(`link-id-${index}`);
+
+					const img = document.createElement("img");
+					img.src = `${item.img}`;
+					img.className = "img_style";
+					idLink.appendChild(img);
+
+					const div = document.createElement("div");
+					div.className = "name_style";
+					div.textContent = `${item.name}`;
+					idLink.appendChild(div);
+				});
+			} catch (error) {
+				console.log(error);
+			}
+		});
+	</script>
+	<style>
+		a {
+			text-decoration: none;
+		}
+		.bm-container {
+			width: 100%;
+			display: flex;
+			gap: 5px;
+			align-items: center;
+			flex-wrap: wrap;
+			background-color: #6c757d;
+			padding: 10px 0px;
+		}
+		.item_container {
+			width: 15%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.name_style {
+			font-size: 11px;
+			margin-top: 5px;
+			color: #f8f9fa;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 80px;
+			white-space: nowrap;
+			text-align: center;
+		}
+		.img_style {
+			width: 100%;
+			height: 100%;
+			max-width: 100px;
+			max-height: 100px;
+			border-radius: 8px;
+		}
+	</style>
+</html>
